@@ -4,6 +4,12 @@ import { siteSettingsApi } from '../../api/siteSettings.js';
 
 const FIELD_GROUPS = [
   {
+    title: 'Identity',
+    fields: [
+      { key: 'creatorName', label: 'Creator / brand name', type: 'text' },
+    ],
+  },
+  {
     title: 'Homepage hero',
     fields: [
       { key: 'heroTagline', label: 'Eyebrow tagline', type: 'text' },
@@ -29,7 +35,6 @@ const FIELD_GROUPS = [
     fields: [
       { key: 'workWithMeDescription', label: 'Collaboration description', type: 'textarea' },
       { key: 'contactEmail', label: 'Contact email', type: 'email' },
-      { key: 'contactUrl', label: 'Contact form URL (optional)', type: 'url' },
     ],
   },
   {
@@ -41,6 +46,12 @@ const FIELD_GROUPS = [
     ],
   },
 ];
+
+// The update DTO only accepts these editable text fields — id/createdAt/
+// updatedAt are server-managed and must never be sent back on save. Deriving
+// this list from FIELD_GROUPS (rather than hand-maintaining a second list)
+// keeps the submitted payload and the rendered form permanently in sync.
+const EDITABLE_FIELD_KEYS = FIELD_GROUPS.flatMap((group) => group.fields.map((field) => field.key));
 
 export function AdminSiteSettingsPage() {
   const [form, setForm] = useState(null);
@@ -58,7 +69,11 @@ export function AdminSiteSettingsPage() {
     setStatus('');
     setSubmitting(true);
     try {
-      const updated = await siteSettingsApi.update(form);
+      const payload = {};
+      for (const key of EDITABLE_FIELD_KEYS) {
+        payload[key] = form[key];
+      }
+      const updated = await siteSettingsApi.update(payload);
       setForm(updated);
       setStatus('Saved.');
     } catch (err) {
@@ -79,7 +94,8 @@ export function AdminSiteSettingsPage() {
         <div>
           <h1 className="admin-panel__title">Site Content</h1>
           <p className="admin-panel__description">
-            Everything editable on the homepage, About page, and footer lives here.
+            Everything editable on the homepage, About page, navigation, and footer lives here — including the
+            creator name shown across the whole site.
           </p>
         </div>
       </div>

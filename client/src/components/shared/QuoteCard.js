@@ -1,12 +1,15 @@
+import { useSiteContent } from '../../context/SiteContentContext.js';
 import './QuoteCard.css';
 
 export function QuoteCard({ quote }) {
+  const { siteContent } = useSiteContent();
+
   return (
     <figure className="quote-card">
       <blockquote className="quote-card__text">“{quote.text}”</blockquote>
       <figcaption className="quote-card__caption">
         {quote.isOriginal ? (
-          <span>Giorgi Burkadze</span>
+          <span>{siteContent?.creatorName || 'Original'}</span>
         ) : (
           <span>
             {quote.author}

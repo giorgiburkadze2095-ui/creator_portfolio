@@ -1,11 +1,15 @@
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.js';
+import { MessagesProvider, useMessagesContext } from '../../context/MessagesContext.js';
 import { RouteTransition } from '../shared/RouteTransition.js';
+import { ThemeToggle } from '../shared/ThemeToggle.js';
 import './AdminLayout.css';
 import './admin-ui.css';
 
 const NAV_ITEMS = [
   { to: '/admin', label: 'Dashboard', end: true },
+  { to: '/admin/account', label: 'My Account' },
+  { to: '/admin/messages', label: 'Messages' },
   { to: '/admin/content', label: 'Content' },
   { to: '/admin/quotes', label: 'Quotes' },
   { to: '/admin/categories', label: 'Categories' },
@@ -14,8 +18,9 @@ const NAV_ITEMS = [
   { to: '/admin/site-settings', label: 'Site Content' },
 ];
 
-export function AdminLayout() {
+function AdminLayoutInner() {
   const { user, logout, isSuperAdmin } = useAuth();
+  const { unreadCount } = useMessagesContext();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -29,6 +34,9 @@ export function AdminLayout() {
           {items.map((item) => (
             <NavLink key={item.to} to={item.to} end={item.end} className="admin-layout__nav-link">
               {item.label}
+              {item.to === '/admin/messages' && unreadCount > 0 && (
+                <span className="admin-nav-badge">{unreadCount}</span>
+              )}
             </NavLink>
           ))}
         </nav>
@@ -45,13 +53,15 @@ export function AdminLayout() {
             {items.map((item) => (
               <option key={item.to} value={item.to}>
                 {item.label}
+                {item.to === '/admin/messages' && unreadCount > 0 ? ` (${unreadCount})` : ''}
               </option>
             ))}
           </select>
-          <div className="admin-layout__user-block">
+          <NavLink to="/admin/account" className="admin-layout__user-block">
             <p className="admin-layout__user">{user?.name}</p>
             <p className="admin-layout__role">{user?.role}</p>
-          </div>
+          </NavLink>
+          <ThemeToggle />
           <button type="button" className="button button--ghost" onClick={logout}>
             Log out
           </button>
@@ -63,5 +73,13 @@ export function AdminLayout() {
         </main>
       </div>
     </div>
+  );
+}
+
+export function AdminLayout() {
+  return (
+    <MessagesProvider>
+      <AdminLayoutInner />
+    </MessagesProvider>
   );
 }

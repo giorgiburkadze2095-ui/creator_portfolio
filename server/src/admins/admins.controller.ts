@@ -20,9 +20,12 @@ import { Role } from '../common/enums/role.enum.js';
 import type { AdminUser } from './entities/admin-user.entity.js';
 import type { AuthenticatedUser } from '../auth/types/authenticated-user.type.js';
 
+// Strips both credential fields (the hash itself, and the setup-token hash)
+// and replaces them with a plain `hasPassword` flag so the Admin UI can show
+// setup status without ever seeing anything usable as a credential.
 function toSafeAdmin(admin: AdminUser) {
-  const { passwordHash: _passwordHash, ...safe } = admin;
-  return safe;
+  const { passwordHash, passwordSetupTokenHash: _tokenHash, ...safe } = admin;
+  return { ...safe, hasPassword: passwordHash !== null };
 }
 
 @Controller('admin/admins')
@@ -39,8 +42,16 @@ export class AdminsController {
 
   @Post()
   async create(@Body() dto: CreateAdminDto) {
-    const admin = await this.adminsService.create(dto);
-    return toSafeAdmin(admin);
+    const { admin, setupToken } = await this.adminsService.create(dto);
+    return { ...toSafeAdmin(admin), setupToken };
+  }
+
+  // Re-issues a setup link for an admin who never finished onboarding.
+  // AdminsService refuses this once the admin has a password of their own.
+  @Post(':id/resend-setup')
+  async resendSetup(@Param('id', ParseIntPipe) id: number) {
+    const { admin, setupToken } = await this.adminsService.resendSetup(id);
+    return { ...toSafeAdmin(admin), setupToken };
   }
 
   @Patch(':id')

@@ -1,6 +1,6 @@
-import { useOutletContext } from 'react-router-dom';
 import { SEO } from '../components/shared/SEO.js';
 import { Reveal } from '../components/shared/Reveal.js';
+import { useSiteContent } from '../context/SiteContentContext.js';
 import './AboutPage.css';
 
 const SECTIONS = [
@@ -14,12 +14,12 @@ const SECTIONS = [
 ];
 
 export function AboutPage() {
-  const { siteContent } = useOutletContext();
+  const { siteContent } = useSiteContent();
   const visibleSections = SECTIONS.filter((section) => siteContent?.[section.key]);
 
   return (
     <div className="section container about-page">
-      <SEO title="About" description="About Giorgi Burkadze — story, interests, and philosophy." path="/about" />
+      <SEO title="About" description="Story, interests, and philosophy." path="/about" />
       <Reveal className="section-heading">
         <span className="section-heading__eyebrow">About</span>
         <h1 className="section-heading__title">The person behind the content</h1>

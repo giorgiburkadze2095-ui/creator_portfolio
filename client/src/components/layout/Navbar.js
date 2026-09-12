@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSiteContent } from '../../context/SiteContentContext.js';
+import { ThemeToggle } from '../shared/ThemeToggle.js';
 import './Navbar.css';
 
 const NAV_LINKS = [
@@ -14,8 +16,10 @@ const NAV_LINKS = [
 ];
 
 export function Navbar() {
+  const { siteContent } = useSiteContent();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const creatorName = siteContent?.creatorName || 'Your Name';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -35,7 +39,7 @@ export function Navbar() {
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="container navbar__row">
         <NavLink to="/" className="navbar__brand" onClick={() => setIsOpen(false)}>
-          Giorgi Burkadze
+          {creatorName}
         </NavLink>
 
         <nav className="navbar__links" aria-label="Primary">
@@ -46,17 +50,21 @@ export function Navbar() {
           ))}
         </nav>
 
-        <button
-          type="button"
-          className={`navbar__toggle ${isOpen ? 'navbar__toggle--open' : ''}`}
-          aria-label={isOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={isOpen}
-          onClick={() => setIsOpen((prev) => !prev)}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
+        <div className="navbar__utility">
+          <ThemeToggle />
+
+          <button
+            type="button"
+            className={`navbar__toggle ${isOpen ? 'navbar__toggle--open' : ''}`}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isOpen}
+            onClick={() => setIsOpen((prev) => !prev)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
       </div>
 
       <div className={`navbar__mobile ${isOpen ? 'navbar__mobile--open' : ''}`}>

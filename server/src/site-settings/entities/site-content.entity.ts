@@ -7,6 +7,12 @@ export class SiteContent {
   @PrimaryColumn({ default: 1 })
   id: number;
 
+  // The creator's public display/brand name — used anywhere the site shows
+  // who it belongs to (nav brand, footer, hero fallback, page titles,
+  // original-quote attribution) instead of hardcoding a name in the UI.
+  @Column({ default: '' })
+  creatorName: string;
+
   @Column({ default: '' })
   heroTitle: string;
 

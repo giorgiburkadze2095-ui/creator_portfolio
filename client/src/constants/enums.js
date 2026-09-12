@@ -1,10 +1,26 @@
-export const PLATFORMS = ['INSTAGRAM', 'FACEBOOK', 'TIKTOK', 'YOUTUBE', 'OTHER'];
+export const PLATFORMS = [
+  'INSTAGRAM',
+  'FACEBOOK',
+  'TIKTOK',
+  'YOUTUBE',
+  'SPOTIFY',
+  'APPLE_MUSIC',
+  'SOUNDCLOUD',
+  'BANDCAMP',
+  'BEATPORT',
+  'OTHER',
+];
 
 export const PLATFORM_LABELS = {
   INSTAGRAM: 'Instagram',
   FACEBOOK: 'Facebook',
   TIKTOK: 'TikTok',
   YOUTUBE: 'YouTube',
+  SPOTIFY: 'Spotify',
+  APPLE_MUSIC: 'Apple Music',
+  SOUNDCLOUD: 'SoundCloud',
+  BANDCAMP: 'Bandcamp',
+  BEATPORT: 'Beatport',
   OTHER: 'Other',
 };
 

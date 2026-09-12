@@ -1,3 +1,7 @@
+.collaborate-page__form {
+  margin-bottom: var(--space-4);
+}
+
 .collaborate-page__actions {
   display: flex;
   gap: var(--space-3);

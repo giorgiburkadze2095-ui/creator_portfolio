@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useOutletContext } from 'react-router-dom';
 import { SEO } from '../components/shared/SEO.js';
 import { PlatformIcon } from '../components/shared/PlatformIcon.js';
 import { Reveal } from '../components/shared/Reveal.js';
+import { ContactForm } from '../components/shared/ContactForm.js';
+import { useSiteContent } from '../context/SiteContentContext.js';
 import { socialLinksApi } from '../api/socialLinks.js';
 import './CollaboratePage.css';
 
 export function CollaboratePage() {
-  const { siteContent } = useOutletContext();
+  const { siteContent } = useSiteContent();
   const [socialLinks, setSocialLinks] = useState([]);
 
   useEffect(() => {
@@ -16,35 +17,30 @@ export function CollaboratePage() {
 
   return (
     <div className="section container collaborate-page">
-      <SEO
-        title="Collaborate"
-        description="Work with Giorgi Burkadze on fitness, music and lifestyle collaborations."
-        path="/collaborate"
-      />
+      <SEO title="Collaborate" description="Get in touch about collaborations and partnerships." path="/collaborate" />
       <Reveal className="section-heading">
         <span className="section-heading__eyebrow">Work with me</span>
         <h1 className="section-heading__title">Let's build something real</h1>
         <p className="section-heading__description">
           {siteContent?.workWithMeDescription ||
-            "I collaborate with brands and creators around fitness, music, and lifestyle — always looking for a fit with what I actually make, not just a paycheck. If that sounds like you, reach out."}
+            'Reach out below to start a conversation about working together.'}
         </p>
       </Reveal>
 
-      <Reveal delay={0.1} className="collaborate-page__actions">
-        {siteContent?.contactEmail && (
-          <a href={`mailto:${siteContent.contactEmail}`} className="button button--primary">
-            Email me
-          </a>
-        )}
-        {siteContent?.contactUrl && (
-          <a href={siteContent.contactUrl} target="_blank" rel="noopener noreferrer" className="button button--ghost">
-            Contact form ↗
-          </a>
-        )}
+      <Reveal delay={0.1} className="collaborate-page__form">
+        <ContactForm />
       </Reveal>
 
+      {siteContent?.contactEmail && (
+        <Reveal delay={0.15} className="collaborate-page__actions">
+          <a href={`mailto:${siteContent.contactEmail}`} className="button button--ghost">
+            Prefer email? {siteContent.contactEmail}
+          </a>
+        </Reveal>
+      )}
+
       {socialLinks.length > 0 && (
-        <Reveal delay={0.15} className="collaborate-page__social">
+        <Reveal delay={0.2} className="collaborate-page__social">
           <p className="collaborate-page__social-label">Or find me here</p>
           <div className="collaborate-page__social-list">
             {socialLinks.map((link) => (

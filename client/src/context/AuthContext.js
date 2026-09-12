@@ -21,9 +21,21 @@ export function AuthProvider({ children }) {
     return loggedInUser;
   }, []);
 
+  const setupPassword = useCallback(async (token, password) => {
+    const { user: loggedInUser } = await authApi.setupPassword(token, password);
+    setUser(loggedInUser);
+    return loggedInUser;
+  }, []);
+
   const logout = useCallback(async () => {
     await authApi.logout().catch(() => {});
     setUser(null);
+  }, []);
+
+  // Called after a self-service profile/password update so the nav, admin
+  // topbar, etc. reflect the new name/email without a full reload.
+  const updateSelf = useCallback((updatedUser) => {
+    setUser(updatedUser);
   }, []);
 
   const value = useMemo(
@@ -32,10 +44,12 @@ export function AuthProvider({ children }) {
       loading,
       login,
       logout,
+      setupPassword,
+      updateSelf,
       isAuthenticated: !!user,
       isSuperAdmin: user?.role === 'SUPER_ADMIN',
     }),
-    [user, loading, login, logout],
+    [user, loading, login, logout, setupPassword, updateSelf],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

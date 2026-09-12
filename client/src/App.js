@@ -12,7 +12,10 @@ import { PartnersPage } from './pages/PartnersPage.js';
 import { CollaboratePage } from './pages/CollaboratePage.js';
 import { NotFoundPage } from './pages/NotFoundPage.js';
 import { AdminLoginPage } from './pages/admin/AdminLoginPage.js';
+import { AdminSetupPasswordPage } from './pages/admin/AdminSetupPasswordPage.js';
+import { AdminAccountPage } from './pages/admin/AdminAccountPage.js';
 import { AdminDashboardPage } from './pages/admin/AdminDashboardPage.js';
+import { AdminMessagesPage } from './pages/admin/AdminMessagesPage.js';
 import { AdminContentPage } from './pages/admin/AdminContentPage.js';
 import { AdminQuotesPage } from './pages/admin/AdminQuotesPage.js';
 import { AdminCategoriesPage } from './pages/admin/AdminCategoriesPage.js';
@@ -37,10 +40,13 @@ function App() {
       </Route>
 
       <Route path="/admin/login" element={<AdminLoginPage />} />
+      <Route path="/admin/setup-password" element={<AdminSetupPasswordPage />} />
 
       <Route element={<ProtectedRoute />}>
         <Route element={<AdminLayout />}>
           <Route path="/admin" element={<AdminDashboardPage />} />
+          <Route path="/admin/account" element={<AdminAccountPage />} />
+          <Route path="/admin/messages" element={<AdminMessagesPage />} />
           <Route path="/admin/content" element={<AdminContentPage />} />
           <Route path="/admin/quotes" element={<AdminQuotesPage />} />
           <Route path="/admin/categories" element={<AdminCategoriesPage />} />

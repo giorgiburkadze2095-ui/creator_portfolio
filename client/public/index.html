@@ -2,16 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <script>
+      // Applies a saved light-theme preference before the first paint, so
+      // there is no flash of the default dark theme for returning visitors
+      // who chose light. Dark needs no attribute — it's the unqualified
+      // :root default in index.css — so this only ever has to act for light.
+      (function () {
+        try {
+          if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          }
+        } catch (e) {}
+      })();
+    </script>
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0b0b0c" />
     <meta
       name="description"
-      content="Giorgi Burkadze — fitness, motivation, music and thoughts. A creator's digital home."
+      content="Fitness, motivation, music and thoughts — a creator's digital home."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Giorgi Burkadze" />
-    <meta property="og:title" content="Giorgi Burkadze" />
     <meta
       property="og:description"
       content="Fitness, motivation, music and thoughts — a creator's digital home."
@@ -25,7 +36,12 @@
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <title>Giorgi Burkadze</title>
+    <!--
+      Title, og:site_name and og:title are set at runtime by SEO.js from the
+      creator name stored in Admin -> Site Content, so this template ships
+      with no personal/brand name baked into the HTML shell.
+    -->
+    <title>Creator Site</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

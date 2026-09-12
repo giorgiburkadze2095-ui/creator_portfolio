@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useSiteContent } from '../../context/SiteContentContext.js';
 import './Hero.css';
 
 const container = {
@@ -13,11 +14,11 @@ const item = {
 };
 
 export function Hero({ title, subtitle, tagline }) {
+  const { siteContent } = useSiteContent();
   const prefersReducedMotion = useReducedMotion();
 
-  const heroTitle = title || 'Giorgi Burkadze';
-  const heroSubtitle =
-    subtitle || 'Fitness. Motivation. Music. Thoughts. A creator building an honest, disciplined life in public.';
+  const heroTitle = title || siteContent?.creatorName || 'Your Name';
+  const heroSubtitle = subtitle || 'A place to share what I create, one post at a time.';
 
   const Wrapper = prefersReducedMotion ? 'div' : motion.div;
   const wrapperProps = prefersReducedMotion

@@ -1,7 +1,11 @@
 import { Helmet } from 'react-helmet-async';
+import { useSiteContent } from '../../context/SiteContentContext.js';
 
 export function SEO({ title, description, path = '' }) {
-  const fullTitle = title ? `${title} — Giorgi Burkadze` : 'Giorgi Burkadze';
+  const { siteContent } = useSiteContent();
+  const siteName = siteContent?.creatorName || '';
+
+  const fullTitle = siteName ? (title ? `${title} — ${siteName}` : siteName) : title || 'Home';
   const canonical = typeof window !== 'undefined' ? `${window.location.origin}${path}` : path;
 
   return (
@@ -12,6 +16,7 @@ export function SEO({ title, description, path = '' }) {
       <meta property="og:title" content={fullTitle} />
       {description && <meta property="og:description" content={description} />}
       <meta property="og:url" content={canonical} />
+      {siteName && <meta property="og:site_name" content={siteName} />}
     </Helmet>
   );
 }

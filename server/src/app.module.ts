@@ -12,6 +12,7 @@ import { QuotesModule } from './quotes/quotes.module.js';
 import { PartnersModule } from './partners/partners.module.js';
 import { SocialLinksModule } from './social-links/social-links.module.js';
 import { SiteSettingsModule } from './site-settings/site-settings.module.js';
+import { MessagesModule } from './messages/messages.module.js';
 import { SeedModule } from './database/seed.module.js';
 
 @Module({
@@ -38,6 +39,7 @@ import { SeedModule } from './database/seed.module.js';
     PartnersModule,
     SocialLinksModule,
     SiteSettingsModule,
+    MessagesModule,
     SeedModule,
   ],
   controllers: [AppController],

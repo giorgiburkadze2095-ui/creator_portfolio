@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { socialLinksApi } from '../../api/socialLinks.js';
 import { PlatformIcon } from '../shared/PlatformIcon.js';
+import { useSiteContent } from '../../context/SiteContentContext.js';
 import './Footer.css';
 
-export function Footer({ footerText }) {
+export function Footer() {
+  const { siteContent } = useSiteContent();
   const [socialLinks, setSocialLinks] = useState([]);
 
   useEffect(() => {
@@ -19,13 +21,14 @@ export function Footer({ footerText }) {
   }, []);
 
   const year = new Date().getFullYear();
+  const creatorName = siteContent?.creatorName || 'Your Name';
 
   return (
     <footer className="footer">
       <div className="container footer__row">
         <div className="footer__brand">
-          <p className="footer__name">Giorgi Burkadze</p>
-          <p className="footer__tagline">{footerText || 'Fitness. Motivation. Music. Thoughts.'}</p>
+          <p className="footer__name">{creatorName}</p>
+          {siteContent?.footerText && <p className="footer__tagline">{siteContent.footerText}</p>}
         </div>
 
         {socialLinks.length > 0 && (
@@ -52,7 +55,7 @@ export function Footer({ footerText }) {
         </nav>
       </div>
       <div className="container">
-        <p className="footer__copyright">© {year} Giorgi Burkadze. All rights reserved.</p>
+        <p className="footer__copyright">© {year} {creatorName}. All rights reserved.</p>
       </div>
     </footer>
   );

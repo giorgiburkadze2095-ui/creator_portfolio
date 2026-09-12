@@ -1,17 +1,10 @@
-import { IsBoolean, IsEnum, IsOptional, IsString, MinLength } from 'class-validator';
+import { IsBoolean, IsEnum, IsOptional } from 'class-validator';
 import { Role } from '../../common/enums/role.enum.js';
 
+// SUPER_ADMIN may only manage another admin's role and active status here —
+// name, email and password belong exclusively to that admin (see
+// AuthController's /auth/me endpoints for self-service account management).
 export class UpdateAdminDto {
-  @IsOptional()
-  @IsString()
-  @MinLength(1)
-  name?: string;
-
-  @IsOptional()
-  @IsString()
-  @MinLength(8)
-  password?: string;
-
   @IsOptional()
   @IsEnum(Role)
   role?: Role;

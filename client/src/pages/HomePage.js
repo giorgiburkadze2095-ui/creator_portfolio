@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useOutletContext } from 'react-router-dom';
 import { SEO } from '../components/shared/SEO.js';
 import { Hero } from '../components/home/Hero.js';
 import { PersonalStatement } from '../components/home/PersonalStatement.js';
@@ -13,9 +12,10 @@ import { categoriesApi } from '../api/categories.js';
 import { contentApi } from '../api/content.js';
 import { quotesApi } from '../api/quotes.js';
 import { partnersApi } from '../api/partners.js';
+import { useSiteContent } from '../context/SiteContentContext.js';
 
 export function HomePage() {
-  const { siteContent } = useOutletContext();
+  const { siteContent } = useSiteContent();
   const [categories, setCategories] = useState([]);
   const [featuredContent, setFeaturedContent] = useState([]);
   const [fitnessContent, setFitnessContent] = useState([]);
@@ -34,11 +34,7 @@ export function HomePage() {
 
   return (
     <>
-      <SEO
-        title="Home"
-        description="Fitness, motivation, music and thoughts — the digital home of creator Giorgi Burkadze."
-        path="/"
-      />
+      <SEO title="Home" description="Fitness, motivation, music and thoughts — a creator's digital home." path="/" />
       <Hero title={siteContent?.heroTitle} subtitle={siteContent?.heroSubtitle} tagline={siteContent?.heroTagline} />
       <PersonalStatement text={siteContent?.personalStatement} />
       <CategoryGrid categories={categories} />
@@ -46,15 +42,20 @@ export function HomePage() {
       <TopicSection
         eyebrow="Fitness · Motivation"
         title="Discipline, in progress"
-        description="Training, recovery, and the mindset behind showing up — documented honestly, not polished into a highlight reel."
+        description={
+          siteContent?.aboutFitnessJourney || 'Fitness and motivation content will appear here as it is published.'
+        }
         items={fitnessContent}
         ctaTo="/fitness"
         ctaLabel="See the fitness journey"
       />
       <TopicSection
         eyebrow="Music"
-        title="Learning to make sound"
-        description="I'm early in my music journey. This is the real, unfinished process of creating and discovering music I care about."
+        title="Sound, in progress"
+        description={
+          siteContent?.aboutMusicJourney ||
+          'Music updates and behind-the-scenes content will appear here as they are published.'
+        }
         items={musicContent}
         ctaTo="/music"
         ctaLabel="Explore the music journey"
