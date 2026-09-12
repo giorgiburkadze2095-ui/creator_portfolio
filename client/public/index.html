@@ -15,20 +15,33 @@
         } catch (e) {}
       })();
     </script>
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="24x24" href="%PUBLIC_URL%/favicon-24.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="%PUBLIC_URL%/favicon-64.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0b0b0c" />
     <meta
       name="description"
-      content="Fitness, motivation, music and thoughts — a creator's digital home."
+      content="Giorgi Burkadze is a creator from Georgia exploring creativity, fitness, music, personal growth, and the process of discovering what we are capable of."
     />
     <meta property="og:type" content="website" />
+    <meta property="og:title" content="Giorgi Burkadze — Creator" />
     <meta
       property="og:description"
-      content="Fitness, motivation, music and thoughts — a creator's digital home."
+      content="A journey through creativity, fitness, music, and discovering what I'm capable of."
     />
+    <meta property="og:image" content="%PUBLIC_URL%/seo/og-image.png" />
+    <meta property="og:image:alt" content="Giorgi Burkadze — Creator" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <meta name="twitter:title" content="Giorgi Burkadze — Creator" />
+    <meta
+      name="twitter:description"
+      content="A journey through creativity, fitness, music, and discovering what I'm capable of."
+    />
+    <meta name="twitter:image" content="%PUBLIC_URL%/seo/og-image.png" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon-192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,11 +50,12 @@
       rel="stylesheet"
     />
     <!--
-      Title, og:site_name and og:title are set at runtime by SEO.js from the
-      creator name stored in Admin -> Site Content, so this template ships
-      with no personal/brand name baked into the HTML shell.
+      These are the static fallback tags seen by crawlers that don't run
+      JavaScript. Once the app hydrates, components/shared/SEO.js overrides
+      them per-page using client/src/config/seo.js — keep both in sync when
+      editing (that file documents the exact image paths/filenames).
     -->
-    <title>Creator Site</title>
+    <title>Giorgi Burkadze — Creator</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
