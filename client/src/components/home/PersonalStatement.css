@@ -1,0 +1,13 @@
+.personal-statement {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.personal-statement__text {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  line-height: 1.4;
+  max-width: 46ch;
+  color: var(--color-text);
+}

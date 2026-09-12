@@ -1,0 +1,54 @@
+.content-filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.content-filters__group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.content-filters__pill {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-dim);
+  font-size: 0.85rem;
+  min-height: 40px;
+}
+
+.content-filters__pill--active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #0b0b0c;
+  font-weight: 600;
+}
+
+.content-filters__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.content-filters__select {
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-raised);
+  color: var(--color-text);
+}
+
+.content-filters__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--color-text-dim);
+  min-height: 44px;
+}
