@@ -1,5 +1,6 @@
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.js';
+import { RouteTransition } from '../shared/RouteTransition.js';
 import './AdminLayout.css';
 import './admin-ui.css';
 
@@ -56,7 +57,9 @@ export function AdminLayout() {
           </button>
         </header>
         <main className="admin-layout__content">
-          <Outlet />
+          <RouteTransition>
+            <Outlet />
+          </RouteTransition>
         </main>
       </div>
     </div>

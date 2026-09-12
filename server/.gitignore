@@ -46,10 +46,6 @@ lerna-debug.log*
 .temp
 .tmp
 
-# SQLite database files
-/data
-*.sqlite
-
 # Runtime data
 pids
 *.pid

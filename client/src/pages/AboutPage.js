@@ -20,10 +20,10 @@ export function AboutPage() {
   return (
     <div className="section container about-page">
       <SEO title="About" description="About Giorgi Burkadze — story, interests, and philosophy." path="/about" />
-      <div className="section-heading">
+      <Reveal className="section-heading">
         <span className="section-heading__eyebrow">About</span>
         <h1 className="section-heading__title">The person behind the content</h1>
-      </div>
+      </Reveal>
 
       {visibleSections.length === 0 ? (
         <p className="about-page__placeholder">This page is being written. Check back soon.</p>

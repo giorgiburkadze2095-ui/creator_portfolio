@@ -18,7 +18,7 @@ export function PartnersSection({ partners }) {
         </Reveal>
         <div className="partners-section__grid">
           {partners.map((partner, index) => (
-            <Reveal key={partner.id} delay={index * 0.05}>
+            <Reveal key={partner.id} delay={index * 0.05} scale={0.97}>
               <PartnerCard partner={partner} />
             </Reveal>
           ))}

@@ -4,6 +4,7 @@ import { SEO } from '../components/shared/SEO.js';
 import { ContentFilters } from '../components/content/ContentFilters.js';
 import { ContentGrid } from '../components/content/ContentGrid.js';
 import { LoadingState } from '../components/shared/LoadingState.js';
+import { Reveal } from '../components/shared/Reveal.js';
 import { categoriesApi } from '../api/categories.js';
 import { contentApi } from '../api/content.js';
 
@@ -45,13 +46,13 @@ export function ContentPage() {
   return (
     <div className="section container">
       <SEO title="Content" description="Browse fitness, motivation, music and thought content." path="/content" />
-      <div className="section-heading">
+      <Reveal className="section-heading">
         <span className="section-heading__eyebrow">Content</span>
         <h1 className="section-heading__title">Everything I've shared, in one place</h1>
         <p className="section-heading__description">
           Every card links back to the original post on the platform it was published on.
         </p>
-      </div>
+      </Reveal>
 
       <ContentFilters
         categories={categories}

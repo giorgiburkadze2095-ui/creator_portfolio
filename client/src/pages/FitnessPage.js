@@ -3,6 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 import { SEO } from '../components/shared/SEO.js';
 import { ContentGrid } from '../components/content/ContentGrid.js';
 import { LoadingState } from '../components/shared/LoadingState.js';
+import { Reveal } from '../components/shared/Reveal.js';
 import { contentApi } from '../api/content.js';
 
 export function FitnessPage() {
@@ -25,14 +26,14 @@ export function FitnessPage() {
         description="Training, discipline, and the mindset behind showing up consistently."
         path="/fitness"
       />
-      <div className="section-heading">
+      <Reveal className="section-heading">
         <span className="section-heading__eyebrow">Fitness · Motivation</span>
         <h1 className="section-heading__title">Discipline, in progress</h1>
         <p className="section-heading__description">
           {siteContent?.aboutFitnessJourney ||
             'Training, recovery, and the mindset behind consistency — shared as it actually happens, not as a highlight reel. This is personal experience, not medical or professional advice.'}
         </p>
-      </div>
+      </Reveal>
 
       {loading ? (
         <LoadingState label="Loading fitness content" />

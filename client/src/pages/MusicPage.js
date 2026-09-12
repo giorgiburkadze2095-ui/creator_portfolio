@@ -3,6 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 import { SEO } from '../components/shared/SEO.js';
 import { ContentGrid } from '../components/content/ContentGrid.js';
 import { LoadingState } from '../components/shared/LoadingState.js';
+import { Reveal } from '../components/shared/Reveal.js';
 import { contentApi } from '../api/content.js';
 
 export function MusicPage() {
@@ -21,14 +22,14 @@ export function MusicPage() {
   return (
     <div className="section container">
       <SEO title="Music" description="My music journey — learning, creating, and discovering sound." path="/music" />
-      <div className="section-heading">
+      <Reveal className="section-heading">
         <span className="section-heading__eyebrow">Music</span>
         <h1 className="section-heading__title">Learning to make sound</h1>
         <p className="section-heading__description">
           {siteContent?.aboutMusicJourney ||
             "I'm early in my music journey — this is the honest, in-progress process of learning to create and discovering music that moves me. Not a finished body of work, just the real path."}
         </p>
-      </div>
+      </Reveal>
 
       {loading ? (
         <LoadingState label="Loading music content" />

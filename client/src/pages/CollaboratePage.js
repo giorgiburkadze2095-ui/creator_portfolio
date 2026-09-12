@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { SEO } from '../components/shared/SEO.js';
 import { PlatformIcon } from '../components/shared/PlatformIcon.js';
+import { Reveal } from '../components/shared/Reveal.js';
 import { socialLinksApi } from '../api/socialLinks.js';
 import './CollaboratePage.css';
 
@@ -20,16 +21,16 @@ export function CollaboratePage() {
         description="Work with Giorgi Burkadze on fitness, music and lifestyle collaborations."
         path="/collaborate"
       />
-      <div className="section-heading">
+      <Reveal className="section-heading">
         <span className="section-heading__eyebrow">Work with me</span>
         <h1 className="section-heading__title">Let's build something real</h1>
         <p className="section-heading__description">
           {siteContent?.workWithMeDescription ||
             "I collaborate with brands and creators around fitness, music, and lifestyle — always looking for a fit with what I actually make, not just a paycheck. If that sounds like you, reach out."}
         </p>
-      </div>
+      </Reveal>
 
-      <div className="collaborate-page__actions">
+      <Reveal delay={0.1} className="collaborate-page__actions">
         {siteContent?.contactEmail && (
           <a href={`mailto:${siteContent.contactEmail}`} className="button button--primary">
             Email me
@@ -40,10 +41,10 @@ export function CollaboratePage() {
             Contact form ↗
           </a>
         )}
-      </div>
+      </Reveal>
 
       {socialLinks.length > 0 && (
-        <div className="collaborate-page__social">
+        <Reveal delay={0.15} className="collaborate-page__social">
           <p className="collaborate-page__social-label">Or find me here</p>
           <div className="collaborate-page__social-list">
             {socialLinks.map((link) => (
@@ -59,7 +60,7 @@ export function CollaboratePage() {
               </a>
             ))}
           </div>
-        </div>
+        </Reveal>
       )}
     </div>
   );

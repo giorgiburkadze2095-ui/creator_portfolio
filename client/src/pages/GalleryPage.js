@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { SEO } from '../components/shared/SEO.js';
 import { ContentGrid } from '../components/content/ContentGrid.js';
 import { LoadingState } from '../components/shared/LoadingState.js';
+import { Reveal } from '../components/shared/Reveal.js';
 import { contentApi } from '../api/content.js';
 
 export function GalleryPage() {
@@ -19,13 +20,13 @@ export function GalleryPage() {
   return (
     <div className="section container">
       <SEO title="Gallery" description="A visual gallery of selected content." path="/gallery" />
-      <div className="section-heading">
+      <Reveal className="section-heading">
         <span className="section-heading__eyebrow">Gallery</span>
         <h1 className="section-heading__title">A visual look</h1>
         <p className="section-heading__description">
           Hand-picked visuals from across platforms — each one links back to the original post.
         </p>
-      </div>
+      </Reveal>
 
       {loading ? (
         <LoadingState label="Loading gallery" />

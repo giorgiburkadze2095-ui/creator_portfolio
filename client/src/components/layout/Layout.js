@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Navbar } from './Navbar.js';
 import { Footer } from './Footer.js';
+import { RouteTransition } from '../shared/RouteTransition.js';
 import { siteSettingsApi } from '../../api/siteSettings.js';
 
 export function Layout() {
@@ -22,7 +23,9 @@ export function Layout() {
     <>
       <Navbar />
       <main>
-        <Outlet context={{ siteContent }} />
+        <RouteTransition>
+          <Outlet context={{ siteContent }} />
+        </RouteTransition>
       </main>
       <Footer footerText={siteContent?.footerText} />
     </>
