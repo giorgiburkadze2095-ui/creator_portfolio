@@ -46,7 +46,7 @@ export class AuthController {
   @Post('logout')
   @HttpCode(HttpStatus.OK)
   logout(@Res({ passthrough: true }) res: Response): { success: boolean } {
-    res.clearCookie(ACCESS_TOKEN_COOKIE, { path: '/' });
+    res.clearCookie(ACCESS_TOKEN_COOKIE, this.cookieOptions());
     return { success: true };
   }
 
@@ -81,11 +81,26 @@ export class AuthController {
 
   private setAuthCookie(res: Response, token: string): void {
     res.cookie(ACCESS_TOKEN_COOKIE, token, {
-      httpOnly: true,
-      sameSite: 'lax',
-      secure: this.config.get('NODE_ENV') === 'production',
+      ...this.cookieOptions(),
       maxAge: 7 * 24 * 60 * 60 * 1000,
-      path: '/',
     });
+  }
+
+  // The frontend (Vercel) and this API are separate domains in production,
+  // so every request is cross-site — a cookie only travels on cross-site
+  // fetch/XHR calls (not just top-level navigations) when it's
+  // SameSite=None, and browsers only honor SameSite=None on a Secure
+  // cookie. Locally, frontend and backend share the "localhost" site (just
+  // different ports), where Lax already works and Secure would block the
+  // cookie over plain HTTP — so both attributes flip together on the same
+  // NODE_ENV signal `secure` already used.
+  private cookieOptions(): { httpOnly: true; sameSite: 'none' | 'lax'; secure: boolean; path: string } {
+    const isProduction = this.config.get('NODE_ENV') === 'production';
+    return {
+      httpOnly: true,
+      sameSite: isProduction ? 'none' : 'lax',
+      secure: isProduction,
+      path: '/',
+    };
   }
 }
