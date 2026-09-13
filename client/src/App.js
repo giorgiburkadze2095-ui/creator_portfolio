@@ -10,6 +10,7 @@ import { FitnessPage } from './pages/FitnessPage.js';
 import { AboutPage } from './pages/AboutPage.js';
 import { PartnersPage } from './pages/PartnersPage.js';
 import { CollaboratePage } from './pages/CollaboratePage.js';
+import { TermsOfUsePage } from './pages/TermsOfUsePage.js';
 import { NotFoundPage } from './pages/NotFoundPage.js';
 import { AdminLoginPage } from './pages/admin/AdminLoginPage.js';
 import { AdminSetupPasswordPage } from './pages/admin/AdminSetupPasswordPage.js';
@@ -36,6 +37,7 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/partners" element={<PartnersPage />} />
         <Route path="/collaborate" element={<CollaboratePage />} />
+        <Route path="/terms-of-use" element={<TermsOfUsePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
 

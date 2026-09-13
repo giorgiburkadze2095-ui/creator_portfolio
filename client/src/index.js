@@ -7,6 +7,7 @@ import App from './App';
 import { AuthProvider } from './context/AuthContext.js';
 import { SiteContentProvider } from './context/SiteContentContext.js';
 import { ThemeProvider } from './context/ThemeContext.js';
+import { MusicProvider } from './context/MusicContext.js';
 import reportWebVitals from './reportWebVitals';
 
 // Every internal navigation should land at the top of the new page (see
@@ -25,7 +26,9 @@ root.render(
         <BrowserRouter>
           <SiteContentProvider>
             <AuthProvider>
-              <App />
+              <MusicProvider>
+                <App />
+              </MusicProvider>
             </AuthProvider>
           </SiteContentProvider>
         </BrowserRouter>

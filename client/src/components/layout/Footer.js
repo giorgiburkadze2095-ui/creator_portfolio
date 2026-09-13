@@ -52,6 +52,7 @@ export function Footer() {
           <Link to="/collaborate">Work with me</Link>
           <Link to="/about">About</Link>
           <Link to="/content">Content</Link>
+          <Link to="/terms-of-use">Terms of Use</Link>
         </nav>
       </div>
       <div className="container">

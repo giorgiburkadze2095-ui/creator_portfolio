@@ -1,0 +1,53 @@
+/* Editorial text control — same typographic language as the eyebrow labels
+   used elsewhere on the site (.section-heading__eyebrow, .hero__eyebrow):
+   uppercase, letter-spaced, display font. Deliberately not a bordered/pill
+   button or an icon — just a small piece of set type that happens to react
+   to touch, so it reads as part of the site's identity rather than a
+   generic audio-player widget. */
+.music-toggle {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 var(--space-1);
+  background: none;
+  border: none;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-text-dim);
+  transition: color 0.2s ease, transform 0.2s var(--ease-out);
+}
+
+.music-toggle:hover {
+  color: var(--color-text);
+  transform: translateY(-1px);
+}
+
+.music-toggle--active {
+  color: var(--color-accent);
+}
+
+.music-toggle--active:hover {
+  color: var(--color-accent-hover);
+}
+
+@media (max-width: 400px) {
+  .music-toggle {
+    padding: 0;
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+  }
+}
+
+/* Below this, "Break the silence" next to the brand name, theme toggle, and
+   menu button gets tight enough to wrap the brand name onto two lines —
+   trim further so the existing navbar layout never reflows. */
+@media (max-width: 340px) {
+  .music-toggle {
+    font-size: 0.5rem;
+    letter-spacing: 0;
+  }
+}

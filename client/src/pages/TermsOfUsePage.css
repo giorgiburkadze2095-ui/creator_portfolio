@@ -1,0 +1,50 @@
+/* Shared "legal document" look — named generically (not terms-of-use-specific)
+   so a future page like Privacy Policy can reuse this exact file/class and
+   stay visually consistent, rather than duplicating these rules. */
+
+.legal-page__updated {
+  color: var(--color-text-faint);
+  font-size: 0.85rem;
+  margin-top: var(--space-2);
+}
+
+.legal-page__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 72ch;
+}
+
+.legal-page__body > p {
+  color: var(--color-text-dim);
+  line-height: 1.75;
+}
+
+.legal-page__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.legal-page__section h2 {
+  font-size: 1.3rem;
+}
+
+.legal-page__section p {
+  color: var(--color-text-dim);
+  line-height: 1.75;
+}
+
+.legal-page__section ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding-left: 1.25em;
+  margin-top: var(--space-1);
+}
+
+.legal-page__section li {
+  list-style: disc;
+  color: var(--color-text-dim);
+  line-height: 1.6;
+}

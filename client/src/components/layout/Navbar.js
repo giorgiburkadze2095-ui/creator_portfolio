@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSiteContent } from '../../context/SiteContentContext.js';
 import { ThemeToggle } from '../shared/ThemeToggle.js';
+import { MusicToggle } from '../shared/MusicToggle.js';
 import './Navbar.css';
 
 const NAV_LINKS = [
@@ -51,6 +52,7 @@ export function Navbar() {
         </nav>
 
         <div className="navbar__utility">
+          <MusicToggle />
           <ThemeToggle />
 
           <button
