@@ -185,7 +185,14 @@ ul, ol {
 }
 
 .section {
-  padding: var(--space-7) 0;
+  /* Longhand, not `padding: var(--space-7) 0` — the shorthand also sets
+     padding-left/right to 0, which (at equal specificity, later in the
+     cascade) silently overrides .container's horizontal padding on every
+     element that carries both classes, e.g. the "section container" page
+     wrapper used by every non-home page. That left their content flush
+     against the viewport edges below the container's 1180px max-width. */
+  padding-top: var(--space-7);
+  padding-bottom: var(--space-7);
 }
 
 .section-heading {
