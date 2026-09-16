@@ -1,29 +1,9 @@
 import { PLATFORMS, PLATFORM_LABELS } from '../../constants/enums.js';
 import './ContentFilters.css';
 
-export function ContentFilters({ categories, category, platform, featuredOnly, onChange }) {
+export function ContentFilters({ platform, featuredOnly, onChange }) {
   return (
     <div className="content-filters">
-      <div className="content-filters__group" role="group" aria-label="Filter by category">
-        <button
-          type="button"
-          className={`content-filters__pill ${!category ? 'content-filters__pill--active' : ''}`}
-          onClick={() => onChange({ category: '' })}
-        >
-          All
-        </button>
-        {categories.map((cat) => (
-          <button
-            key={cat.id}
-            type="button"
-            className={`content-filters__pill ${category === cat.slug ? 'content-filters__pill--active' : ''}`}
-            onClick={() => onChange({ category: cat.slug })}
-          >
-            {cat.label}
-          </button>
-        ))}
-      </div>
-
       <div className="content-filters__row">
         <select
           className="content-filters__select"

@@ -13,7 +13,7 @@ export function MusicPage() {
 
   useEffect(() => {
     contentApi
-      .list({ category: 'music' })
+      .list({ music: 'true' })
       .then(setItems)
       .catch(() => setItems([]))
       .finally(() => setLoading(false));

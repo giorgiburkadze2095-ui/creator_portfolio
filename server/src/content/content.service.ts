@@ -15,25 +15,16 @@ export class ContentService {
   ) {}
 
   async findPublic(query: QueryContentDto): Promise<ContentItem[]> {
-    const qb = this.contentItems
-      .createQueryBuilder('item')
-      .leftJoinAndSelect('item.category', 'category')
-      .where('item.published = :published', { published: true });
+    const qb = this.contentItems.createQueryBuilder('item').where('item.published = :published', { published: true });
 
-    if (query.category) {
-      qb.andWhere('category.slug = :slug', { slug: query.category });
+    if (query.music !== undefined) {
+      qb.andWhere('item.isMusic = :isMusic', { isMusic: query.music === 'true' });
     }
     if (query.platform) {
       qb.andWhere('item.platform = :platform', { platform: query.platform });
     }
     if (query.featured !== undefined) {
       qb.andWhere('item.featured = :featured', { featured: query.featured === 'true' });
-    }
-    if (query.displayMode) {
-      // simple-array is stored as a comma-joined string; match on substring boundaries.
-      qb.andWhere('(\',\' || item.displayModes || \',\') LIKE :mode', {
-        mode: `%,${query.displayMode},%`,
-      });
     }
 
     qb.orderBy('item.sortOrder', 'ASC').addOrderBy('item.createdAt', 'DESC');
@@ -43,7 +34,6 @@ export class ContentService {
 
   async findAllAdmin(): Promise<ContentItem[]> {
     return this.contentItems.find({
-      relations: { category: true },
       order: { sortOrder: 'ASC', createdAt: 'DESC' },
     });
   }

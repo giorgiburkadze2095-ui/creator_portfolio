@@ -33,6 +33,10 @@ export class UpdateSiteContentDto {
   @IsString()
   aboutInterests?: string;
 
+  // Deprecated: the Fitness section (nav link, page, and Admin field) was
+  // removed. Kept, like contactUrl below, so existing Site Content rows and
+  // the column keep working unchanged; the Admin UI no longer exposes this
+  // field for editing.
   @IsOptional()
   @IsString()
   aboutFitnessJourney?: string;

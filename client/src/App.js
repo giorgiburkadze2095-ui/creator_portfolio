@@ -4,9 +4,7 @@ import { ProtectedRoute } from './components/admin/ProtectedRoute.js';
 import { AdminLayout } from './components/admin/AdminLayout.js';
 import { HomePage } from './pages/HomePage.js';
 import { ContentPage } from './pages/ContentPage.js';
-import { GalleryPage } from './pages/GalleryPage.js';
 import { MusicPage } from './pages/MusicPage.js';
-import { FitnessPage } from './pages/FitnessPage.js';
 import { AboutPage } from './pages/AboutPage.js';
 import { PartnersPage } from './pages/PartnersPage.js';
 import { CollaboratePage } from './pages/CollaboratePage.js';
@@ -19,7 +17,6 @@ import { AdminDashboardPage } from './pages/admin/AdminDashboardPage.js';
 import { AdminMessagesPage } from './pages/admin/AdminMessagesPage.js';
 import { AdminContentPage } from './pages/admin/AdminContentPage.js';
 import { AdminQuotesPage } from './pages/admin/AdminQuotesPage.js';
-import { AdminCategoriesPage } from './pages/admin/AdminCategoriesPage.js';
 import { AdminPartnersPage } from './pages/admin/AdminPartnersPage.js';
 import { AdminSocialLinksPage } from './pages/admin/AdminSocialLinksPage.js';
 import { AdminSiteSettingsPage } from './pages/admin/AdminSiteSettingsPage.js';
@@ -31,9 +28,7 @@ function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/content" element={<ContentPage />} />
-        <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/music" element={<MusicPage />} />
-        <Route path="/fitness" element={<FitnessPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/partners" element={<PartnersPage />} />
         <Route path="/collaborate" element={<CollaboratePage />} />
@@ -51,7 +46,6 @@ function App() {
           <Route path="/admin/messages" element={<AdminMessagesPage />} />
           <Route path="/admin/content" element={<AdminContentPage />} />
           <Route path="/admin/quotes" element={<AdminQuotesPage />} />
-          <Route path="/admin/categories" element={<AdminCategoriesPage />} />
           <Route path="/admin/partners" element={<AdminPartnersPage />} />
           <Route path="/admin/social-links" element={<AdminSocialLinksPage />} />
           <Route path="/admin/site-settings" element={<AdminSiteSettingsPage />} />

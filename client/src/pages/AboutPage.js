@@ -7,7 +7,6 @@ const SECTIONS = [
   { key: 'aboutIntro', title: 'Who I am' },
   { key: 'aboutStory', title: 'My story' },
   { key: 'aboutInterests', title: 'What I care about' },
-  { key: 'aboutFitnessJourney', title: 'The fitness journey' },
   { key: 'aboutMusicJourney', title: 'The music journey' },
   { key: 'aboutPhilosophy', title: 'How I think about it' },
   { key: 'collaborationInfo', title: 'Collaboration' },

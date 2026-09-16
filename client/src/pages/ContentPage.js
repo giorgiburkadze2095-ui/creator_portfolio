@@ -5,31 +5,24 @@ import { ContentFilters } from '../components/content/ContentFilters.js';
 import { ContentGrid } from '../components/content/ContentGrid.js';
 import { LoadingState } from '../components/shared/LoadingState.js';
 import { Reveal } from '../components/shared/Reveal.js';
-import { categoriesApi } from '../api/categories.js';
 import { contentApi } from '../api/content.js';
 
 export function ContentPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const category = searchParams.get('category') || '';
   const platform = searchParams.get('platform') || '';
   const featuredOnly = searchParams.get('featured') === 'true';
 
-  const [categories, setCategories] = useState([]);
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    categoriesApi.list().then(setCategories).catch(() => {});
-  }, []);
-
-  useEffect(() => {
     setLoading(true);
     contentApi
-      .list({ category, platform, featured: featuredOnly ? 'true' : undefined })
+      .list({ platform, featured: featuredOnly ? 'true' : undefined })
       .then(setItems)
       .catch(() => setItems([]))
       .finally(() => setLoading(false));
-  }, [category, platform, featuredOnly]);
+  }, [platform, featuredOnly]);
 
   const handleChange = (partial) => {
     const next = new URLSearchParams(searchParams);
@@ -54,13 +47,7 @@ export function ContentPage() {
         </p>
       </Reveal>
 
-      <ContentFilters
-        categories={categories}
-        category={category}
-        platform={platform}
-        featuredOnly={featuredOnly}
-        onChange={handleChange}
-      />
+      <ContentFilters platform={platform} featuredOnly={featuredOnly} onChange={handleChange} />
 
       {loading ? (
         <LoadingState label="Loading content" />
@@ -68,7 +55,7 @@ export function ContentPage() {
         <ContentGrid
           items={items}
           emptyTitle="No content matches these filters"
-          emptyDescription="Try a different category or platform."
+          emptyDescription="Try a different platform."
         />
       )}
     </div>

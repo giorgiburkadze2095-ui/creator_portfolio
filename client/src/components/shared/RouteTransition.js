@@ -14,7 +14,7 @@ import './RouteTransition.css';
 // observers in effects that run after this one) so nothing ever flashes at
 // the previous page's scroll position first. Query-only changes don't
 // retrigger this — it depends on pathname, not the full location — so
-// in-page filters (e.g. Content page category pills) don't reset scroll.
+// in-page filters (e.g. the Content page's platform filter) don't reset scroll.
 export function RouteTransition({ children }) {
   const location = useLocation();
 

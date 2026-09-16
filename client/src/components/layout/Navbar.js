@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useSiteContent } from '../../context/SiteContentContext.js';
 import { ThemeToggle } from '../shared/ThemeToggle.js';
 import { MusicToggle } from '../shared/MusicToggle.js';
+import { handleSameRouteNavClick } from '../../utils/navigation.js';
 import './Navbar.css';
 
 const NAV_LINKS = [
   { to: '/', label: 'Home', end: true },
   { to: '/content', label: 'Content' },
-  { to: '/gallery', label: 'Gallery' },
   { to: '/music', label: 'Music' },
-  { to: '/fitness', label: 'Fitness' },
   { to: '/about', label: 'About' },
   { to: '/partners', label: 'Partners' },
   { to: '/collaborate', label: 'Collaborate' },
@@ -18,6 +17,7 @@ const NAV_LINKS = [
 
 export function Navbar() {
   const { siteContent } = useSiteContent();
+  const { pathname } = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const creatorName = siteContent?.creatorName || 'Your Name';
@@ -39,13 +39,26 @@ export function Navbar() {
   return (
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="container navbar__row">
-        <NavLink to="/" className="navbar__brand" onClick={() => setIsOpen(false)}>
+        <NavLink
+          to="/"
+          className="navbar__brand"
+          onClick={(event) => {
+            handleSameRouteNavClick(event, '/', pathname);
+            setIsOpen(false);
+          }}
+        >
           {creatorName}
         </NavLink>
 
         <nav className="navbar__links" aria-label="Primary">
           {NAV_LINKS.map((link) => (
-            <NavLink key={link.to} to={link.to} end={link.end} className="navbar__link">
+            <NavLink
+              key={link.to}
+              to={link.to}
+              end={link.end}
+              className="navbar__link"
+              onClick={(event) => handleSameRouteNavClick(event, link.to, pathname)}
+            >
               {link.label}
             </NavLink>
           ))}
@@ -77,7 +90,10 @@ export function Navbar() {
               to={link.to}
               end={link.end}
               className="navbar__mobile-link"
-              onClick={() => setIsOpen(false)}
+              onClick={(event) => {
+                handleSameRouteNavClick(event, link.to, pathname);
+                setIsOpen(false);
+              }}
             >
               {link.label}
             </NavLink>

@@ -1,12 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { socialLinksApi } from '../../api/socialLinks.js';
 import { PlatformIcon } from '../shared/PlatformIcon.js';
 import { useSiteContent } from '../../context/SiteContentContext.js';
+import { handleSameRouteNavClick } from '../../utils/navigation.js';
 import './Footer.css';
 
 export function Footer() {
   const { siteContent } = useSiteContent();
+  const { pathname } = useLocation();
   const [socialLinks, setSocialLinks] = useState([]);
 
   useEffect(() => {
@@ -49,10 +51,18 @@ export function Footer() {
         )}
 
         <nav className="footer__links" aria-label="Footer">
-          <Link to="/collaborate">Work with me</Link>
-          <Link to="/about">About</Link>
-          <Link to="/content">Content</Link>
-          <Link to="/terms-of-use">Terms of Use</Link>
+          <Link to="/collaborate" onClick={(event) => handleSameRouteNavClick(event, '/collaborate', pathname)}>
+            Work with me
+          </Link>
+          <Link to="/about" onClick={(event) => handleSameRouteNavClick(event, '/about', pathname)}>
+            About
+          </Link>
+          <Link to="/content" onClick={(event) => handleSameRouteNavClick(event, '/content', pathname)}>
+            Content
+          </Link>
+          <Link to="/terms-of-use" onClick={(event) => handleSameRouteNavClick(event, '/terms-of-use', pathname)}>
+            Terms of Use
+          </Link>
         </nav>
       </div>
       <div className="container">

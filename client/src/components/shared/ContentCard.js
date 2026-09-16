@@ -65,7 +65,7 @@ export function ContentCard({ item, variant = 'grid' }) {
       >
         <div className="content-card__meta">
           <PlatformIcon type={iconType} size={14} />
-          <span>{item.category?.label || platformLabel}</span>
+          <span>{platformLabel}</span>
         </div>
         <h3 className="content-card__title">{item.title}</h3>
         {item.description && <p className="content-card__description">{item.description}</p>}

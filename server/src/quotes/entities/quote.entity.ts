@@ -1,6 +1,5 @@
-import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
+import { Column, Entity } from 'typeorm';
 import { BaseEntity } from '../../common/entities/base.entity.js';
-import { Category } from '../../categories/entities/category.entity.js';
 
 @Entity('quotes')
 export class Quote extends BaseEntity {
@@ -19,13 +18,6 @@ export class Quote extends BaseEntity {
 
   @Column({ type: 'varchar', nullable: true })
   sourceUrl: string | null;
-
-  @ManyToOne(() => Category, { nullable: true, onDelete: 'SET NULL' })
-  @JoinColumn({ name: 'categoryId' })
-  category: Category | null;
-
-  @Column({ type: 'int', nullable: true })
-  categoryId: number | null;
 
   @Column({ default: false })
   featured: boolean;

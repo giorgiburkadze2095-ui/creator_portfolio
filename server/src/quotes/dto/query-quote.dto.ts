@@ -1,10 +1,6 @@
-import { IsBooleanString, IsOptional, IsString } from 'class-validator';
+import { IsBooleanString, IsOptional } from 'class-validator';
 
 export class QueryQuoteDto {
-  @IsOptional()
-  @IsString()
-  category?: string;
-
   @IsOptional()
   @IsBooleanString()
   featured?: string;

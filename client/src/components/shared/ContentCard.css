@@ -19,10 +19,6 @@
   background: var(--color-bg-elevated);
 }
 
-.content-card--gallery .content-card__media {
-  aspect-ratio: 1 / 1;
-}
-
 .content-card__media-trigger {
   all: unset;
   display: block;

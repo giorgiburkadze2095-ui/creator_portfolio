@@ -22,14 +22,8 @@ export class QuotesService {
   ) {}
 
   async findPublic(query: QueryQuoteDto): Promise<Quote[]> {
-    const qb = this.quotes
-      .createQueryBuilder('quote')
-      .leftJoinAndSelect('quote.category', 'category')
-      .where('quote.published = :published', { published: true });
+    const qb = this.quotes.createQueryBuilder('quote').where('quote.published = :published', { published: true });
 
-    if (query.category) {
-      qb.andWhere('category.slug = :slug', { slug: query.category });
-    }
     if (query.featured !== undefined) {
       qb.andWhere('quote.featured = :featured', { featured: query.featured === 'true' });
     }
@@ -39,7 +33,7 @@ export class QuotesService {
   }
 
   async findAllAdmin(): Promise<Quote[]> {
-    return this.quotes.find({ relations: { category: true }, order: { sortOrder: 'ASC', createdAt: 'DESC' } });
+    return this.quotes.find({ order: { sortOrder: 'ASC', createdAt: 'DESC' } });
   }
 
   async create(dto: CreateQuoteDto): Promise<Quote> {

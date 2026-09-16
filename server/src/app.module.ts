@@ -6,7 +6,6 @@ import { AppService } from './app.service.js';
 import { ENTITIES } from './database/entities.js';
 import { AuthModule } from './auth/auth.module.js';
 import { AdminsModule } from './admins/admins.module.js';
-import { CategoriesModule } from './categories/categories.module.js';
 import { ContentModule } from './content/content.module.js';
 import { QuotesModule } from './quotes/quotes.module.js';
 import { PartnersModule } from './partners/partners.module.js';
@@ -33,7 +32,6 @@ import { SeedModule } from './database/seed.module.js';
     }),
     AuthModule,
     AdminsModule,
-    CategoriesModule,
     ContentModule,
     QuotesModule,
     PartnersModule,

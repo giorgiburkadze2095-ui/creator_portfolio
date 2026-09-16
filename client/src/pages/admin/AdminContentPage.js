@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 import { SEO } from '../../components/shared/SEO.js';
 import { contentApi } from '../../api/content.js';
-import { categoriesApi } from '../../api/categories.js';
 import { DISPLAY_MODES, DISPLAY_MODE_LABELS, PLATFORMS, PLATFORM_LABELS } from '../../constants/enums.js';
 
 const EMPTY_FORM = {
   externalUrl: '',
   title: '',
   description: '',
-  categoryId: '',
+  isMusic: false,
   platform: '',
   displayModes: [],
   thumbnailUrl: '',
@@ -20,7 +19,6 @@ const EMPTY_FORM = {
 
 export function AdminContentPage() {
   const [items, setItems] = useState([]);
-  const [categories, setCategories] = useState([]);
   const [form, setForm] = useState(EMPTY_FORM);
   const [editingId, setEditingId] = useState(null);
   const [error, setError] = useState('');
@@ -30,7 +28,6 @@ export function AdminContentPage() {
 
   useEffect(() => {
     loadItems();
-    categoriesApi.adminList().then(setCategories).catch(() => {});
   }, []);
 
   const toggleDisplayMode = (mode) => {
@@ -48,7 +45,7 @@ export function AdminContentPage() {
       externalUrl: item.externalUrl,
       title: item.title,
       description: item.description || '',
-      categoryId: item.categoryId || '',
+      isMusic: item.isMusic || false,
       platform: item.platform || '',
       displayModes: item.displayModes || [],
       thumbnailUrl: item.thumbnailUrl || '',
@@ -71,7 +68,6 @@ export function AdminContentPage() {
     setSubmitting(true);
     const payload = {
       ...form,
-      categoryId: form.categoryId ? Number(form.categoryId) : undefined,
       platform: form.platform || undefined,
       sortOrder: Number(form.sortOrder) || 0,
     };
@@ -103,7 +99,7 @@ export function AdminContentPage() {
         <div>
           <h1 className="admin-panel__title">Content</h1>
           <p className="admin-panel__description">
-            Paste a public post URL, pick a category and where it should appear. No media upload needed.
+            Paste a public post URL and pick where it should appear. No media upload needed.
           </p>
         </div>
       </div>
@@ -131,20 +127,13 @@ export function AdminContentPage() {
           />
         </label>
 
-        <label className="admin-field">
-          <span>Category</span>
-          <select
-            className="admin-select"
-            value={form.categoryId}
-            onChange={(event) => setForm({ ...form, categoryId: event.target.value })}
-          >
-            <option value="">No category</option>
-            {categories.map((cat) => (
-              <option key={cat.id} value={cat.id}>
-                {cat.label}
-              </option>
-            ))}
-          </select>
+        <label className="admin-field admin-checkbox-field">
+          <input
+            type="checkbox"
+            checked={form.isMusic}
+            onChange={(event) => setForm({ ...form, isMusic: event.target.checked })}
+          />
+          Belongs to Music
         </label>
 
         <label className="admin-field admin-field--span-2">
@@ -255,7 +244,7 @@ export function AdminContentPage() {
             <tr>
               <th>Title</th>
               <th>Platform</th>
-              <th>Category</th>
+              <th>Music</th>
               <th>Modes</th>
               <th>Status</th>
               <th>Actions</th>
@@ -266,7 +255,7 @@ export function AdminContentPage() {
               <tr key={item.id}>
                 <td>{item.title}</td>
                 <td>{PLATFORM_LABELS[item.platform]}</td>
-                <td>{item.category?.label || '—'}</td>
+                <td>{item.isMusic ? 'Yes' : '—'}</td>
                 <td>{item.displayModes?.join(', ') || '—'}</td>
                 <td>
                   <span className={`admin-badge ${item.published ? 'admin-badge--active' : ''}`}>

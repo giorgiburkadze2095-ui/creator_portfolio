@@ -1,6 +1,5 @@
-import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
+import { Column, Entity } from 'typeorm';
 import { BaseEntity } from '../../common/entities/base.entity.js';
-import { Category } from '../../categories/entities/category.entity.js';
 import { Platform } from '../../common/enums/platform.enum.js';
 import { DisplayMode } from '../../common/enums/display-mode.enum.js';
 
@@ -18,15 +17,15 @@ export class ContentItem extends BaseEntity {
   @Column({ type: 'text', nullable: true })
   description: string | null;
 
-  @ManyToOne(() => Category, { nullable: true, onDelete: 'SET NULL' })
-  @JoinColumn({ name: 'categoryId' })
-  category: Category | null;
-
-  @Column({ type: 'int', nullable: true })
-  categoryId: number | null;
+  // Replaces the old admin-manageable "category" relation, which was
+  // removed entirely — Music is the only remaining topic that content needs
+  // to be distinguished by, so this is a plain flag rather than a lookup
+  // table admins would otherwise have to curate.
+  @Column({ default: false })
+  isMusic: boolean;
 
   // Subset of DisplayMode — an item can live in more than one place
-  // (e.g. the content feed and the gallery) without a duplicate record.
+  // (e.g. the content feed and the homepage) without a duplicate record.
   @Column({ type: 'simple-array', default: '' })
   displayModes: DisplayMode[];
 

@@ -23,10 +23,6 @@ export class CreateQuoteDto {
   sourceUrl?: string;
 
   @IsOptional()
-  @IsInt()
-  categoryId?: number;
-
-  @IsOptional()
   @IsBoolean()
   featured?: boolean;
 

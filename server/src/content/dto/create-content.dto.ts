@@ -29,8 +29,8 @@ export class CreateContentDto {
   description?: string;
 
   @IsOptional()
-  @IsInt()
-  categoryId?: number;
+  @IsBoolean()
+  isMusic?: boolean;
 
   @IsOptional()
   @IsArray()

@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
 import { SEO } from '../../components/shared/SEO.js';
 import { quotesApi } from '../../api/quotes.js';
-import { categoriesApi } from '../../api/categories.js';
 
 const EMPTY_FORM = {
   text: '',
   author: '',
   attributionSource: '',
   sourceUrl: '',
-  categoryId: '',
   featured: false,
   published: true,
   sortOrder: 0,
@@ -16,7 +14,6 @@ const EMPTY_FORM = {
 
 export function AdminQuotesPage() {
   const [quotes, setQuotes] = useState([]);
-  const [categories, setCategories] = useState([]);
   const [form, setForm] = useState(EMPTY_FORM);
   const [editingId, setEditingId] = useState(null);
   const [error, setError] = useState('');
@@ -26,7 +23,6 @@ export function AdminQuotesPage() {
 
   useEffect(() => {
     loadQuotes();
-    categoriesApi.adminList().then(setCategories).catch(() => {});
   }, []);
 
   const startEdit = (quote) => {
@@ -36,7 +32,6 @@ export function AdminQuotesPage() {
       author: quote.author || '',
       attributionSource: quote.attributionSource || '',
       sourceUrl: quote.sourceUrl || '',
-      categoryId: quote.categoryId || '',
       featured: quote.featured,
       published: quote.published,
       sortOrder: quote.sortOrder,
@@ -55,7 +50,6 @@ export function AdminQuotesPage() {
     setSubmitting(true);
     const payload = {
       ...form,
-      categoryId: form.categoryId ? Number(form.categoryId) : undefined,
       sortOrder: Number(form.sortOrder) || 0,
     };
     try {
@@ -109,22 +103,6 @@ export function AdminQuotesPage() {
             value={form.author}
             onChange={(event) => setForm({ ...form, author: event.target.value })}
           />
-        </label>
-
-        <label className="admin-field">
-          <span>Category</span>
-          <select
-            className="admin-select"
-            value={form.categoryId}
-            onChange={(event) => setForm({ ...form, categoryId: event.target.value })}
-          >
-            <option value="">No category</option>
-            {categories.map((cat) => (
-              <option key={cat.id} value={cat.id}>
-                {cat.label}
-              </option>
-            ))}
-          </select>
         </label>
 
         <label className="admin-field">
@@ -184,7 +162,6 @@ export function AdminQuotesPage() {
             <tr>
               <th>Text</th>
               <th>Author</th>
-              <th>Category</th>
               <th>Status</th>
               <th>Actions</th>
             </tr>
@@ -194,7 +171,6 @@ export function AdminQuotesPage() {
               <tr key={quote.id}>
                 <td style={{ whiteSpace: 'normal', maxWidth: 320 }}>{quote.text}</td>
                 <td>{quote.isOriginal ? 'Original' : quote.author}</td>
-                <td>{quote.category?.label || '—'}</td>
                 <td>
                   <span className={`admin-badge ${quote.published ? 'admin-badge--active' : ''}`}>
                     {quote.published ? 'Published' : 'Hidden'}
@@ -218,7 +194,7 @@ export function AdminQuotesPage() {
             ))}
             {quotes.length === 0 && (
               <tr>
-                <td colSpan={5}>No quotes yet.</td>
+                <td colSpan={4}>No quotes yet.</td>
               </tr>
             )}
           </tbody>

@@ -34,6 +34,10 @@ export class SiteContent {
   @Column({ type: 'text', default: '' })
   aboutInterests: string;
 
+  // Deprecated: the Fitness section (nav link, page, and Admin field) was
+  // removed. Kept, like contactUrl below, so existing Site Content rows and
+  // the column keep working unchanged; nothing in the app reads or writes
+  // this anymore.
   @Column({ type: 'text', default: '' })
   aboutFitnessJourney: string;
 

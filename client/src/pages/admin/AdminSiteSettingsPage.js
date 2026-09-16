@@ -24,7 +24,6 @@ const FIELD_GROUPS = [
       { key: 'aboutIntro', label: 'Who I am', type: 'textarea' },
       { key: 'aboutStory', label: 'My story', type: 'textarea' },
       { key: 'aboutInterests', label: 'What I care about', type: 'textarea' },
-      { key: 'aboutFitnessJourney', label: 'Fitness journey', type: 'textarea' },
       { key: 'aboutMusicJourney', label: 'Music journey', type: 'textarea' },
       { key: 'aboutPhilosophy', label: 'Philosophy', type: 'textarea' },
       { key: 'collaborationInfo', label: 'Collaboration info', type: 'textarea' },

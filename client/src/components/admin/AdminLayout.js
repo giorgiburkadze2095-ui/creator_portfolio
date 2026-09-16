@@ -12,7 +12,6 @@ const NAV_ITEMS = [
   { to: '/admin/messages', label: 'Messages' },
   { to: '/admin/content', label: 'Content' },
   { to: '/admin/quotes', label: 'Quotes' },
-  { to: '/admin/categories', label: 'Categories' },
   { to: '/admin/partners', label: 'Partners' },
   { to: '/admin/social-links', label: 'Social Links' },
   { to: '/admin/site-settings', label: 'Site Content' },

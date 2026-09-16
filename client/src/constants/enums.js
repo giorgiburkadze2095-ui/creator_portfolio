@@ -24,11 +24,10 @@ export const PLATFORM_LABELS = {
   OTHER: 'Other',
 };
 
-export const DISPLAY_MODES = ['SOCIAL_POST', 'GALLERY', 'FEATURED'];
+export const DISPLAY_MODES = ['SOCIAL_POST', 'FEATURED'];
 
 export const DISPLAY_MODE_LABELS = {
   SOCIAL_POST: 'Content feed',
-  GALLERY: 'Gallery',
   FEATURED: 'Featured on homepage',
 };
 

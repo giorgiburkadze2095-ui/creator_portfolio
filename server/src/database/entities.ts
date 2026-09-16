@@ -1,5 +1,4 @@
 import { AdminUser } from '../admins/entities/admin-user.entity.js';
-import { Category } from '../categories/entities/category.entity.js';
 import { ContentItem } from '../content/entities/content-item.entity.js';
 import { Quote } from '../quotes/entities/quote.entity.js';
 import { Partner } from '../partners/entities/partner.entity.js';
@@ -11,7 +10,6 @@ import { ContactMessage } from '../messages/entities/contact-message.entity.js';
 // CLI DataSource (data-source.ts) so both always see the same entity set.
 export const ENTITIES = [
   AdminUser,
-  Category,
   ContentItem,
   Quote,
   Partner,

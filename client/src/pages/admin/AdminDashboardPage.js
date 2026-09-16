@@ -5,13 +5,11 @@ import { contentApi } from '../../api/content.js';
 import { quotesApi } from '../../api/quotes.js';
 import { partnersApi } from '../../api/partners.js';
 import { socialLinksApi } from '../../api/socialLinks.js';
-import { categoriesApi } from '../../api/categories.js';
 import './AdminDashboardPage.css';
 
 const CARDS = [
   { key: 'content', label: 'Content items', to: '/admin/content', loader: () => contentApi.adminList() },
   { key: 'quotes', label: 'Quotes', to: '/admin/quotes', loader: () => quotesApi.adminList() },
-  { key: 'categories', label: 'Categories', to: '/admin/categories', loader: () => categoriesApi.adminList() },
   { key: 'partners', label: 'Partners', to: '/admin/partners', loader: () => partnersApi.adminList() },
   { key: 'socialLinks', label: 'Social links', to: '/admin/social-links', loader: () => socialLinksApi.adminList() },
 ];
