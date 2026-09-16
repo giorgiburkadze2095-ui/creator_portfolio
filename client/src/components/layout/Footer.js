@@ -54,9 +54,6 @@ export function Footer() {
           <Link to="/collaborate" onClick={(event) => handleSameRouteNavClick(event, '/collaborate', pathname)}>
             Work with me
           </Link>
-          <Link to="/about" onClick={(event) => handleSameRouteNavClick(event, '/about', pathname)}>
-            About
-          </Link>
           <Link to="/content" onClick={(event) => handleSameRouteNavClick(event, '/content', pathname)}>
             Content
           </Link>

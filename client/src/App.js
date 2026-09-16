@@ -5,7 +5,6 @@ import { AdminLayout } from './components/admin/AdminLayout.js';
 import { HomePage } from './pages/HomePage.js';
 import { ContentPage } from './pages/ContentPage.js';
 import { MusicPage } from './pages/MusicPage.js';
-import { AboutPage } from './pages/AboutPage.js';
 import { PartnersPage } from './pages/PartnersPage.js';
 import { CollaboratePage } from './pages/CollaboratePage.js';
 import { TermsOfUsePage } from './pages/TermsOfUsePage.js';
@@ -28,7 +27,6 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/content" element={<ContentPage />} />
         <Route path="/music" element={<MusicPage />} />
-        <Route path="/about" element={<AboutPage />} />
         <Route path="/partners" element={<PartnersPage />} />
         <Route path="/collaborate" element={<CollaboratePage />} />
         <Route path="/terms-of-use" element={<TermsOfUsePage />} />

@@ -31,10 +31,7 @@ export function HomePage() {
       <TopicSection
         eyebrow="Music"
         title="Sound, in progress"
-        description={
-          siteContent?.aboutMusicJourney ||
-          'Music updates and behind-the-scenes content will appear here as they are published.'
-        }
+        description="Music updates and behind-the-scenes content will appear here as they are published."
         items={musicContent}
         ctaTo="/music"
         ctaLabel="Explore the music journey"

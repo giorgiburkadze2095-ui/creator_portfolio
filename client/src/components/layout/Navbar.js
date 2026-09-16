@@ -10,7 +10,6 @@ const NAV_LINKS = [
   { to: '/', label: 'Home', end: true },
   { to: '/content', label: 'Content' },
   { to: '/music', label: 'Music' },
-  { to: '/about', label: 'About' },
   { to: '/partners', label: 'Partners' },
   { to: '/collaborate', label: 'Collaborate' },
 ];

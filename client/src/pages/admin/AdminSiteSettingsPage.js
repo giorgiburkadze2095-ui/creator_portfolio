@@ -6,7 +6,7 @@ const FIELD_GROUPS = [
   {
     title: 'Identity',
     fields: [
-      { key: 'creatorName', label: 'Creator / brand name', type: 'text' },
+      { key: 'creatorName', label: 'Brand / creator name', type: 'text' },
     ],
   },
   {
@@ -15,26 +15,13 @@ const FIELD_GROUPS = [
       { key: 'heroTagline', label: 'Eyebrow tagline', type: 'text' },
       { key: 'heroTitle', label: 'Hero title', type: 'text' },
       { key: 'heroSubtitle', label: 'Hero subtitle', type: 'textarea' },
-      { key: 'personalStatement', label: 'Personal statement', type: 'textarea' },
-    ],
-  },
-  {
-    title: 'About page',
-    fields: [
-      { key: 'aboutIntroTitle', label: 'Intro — section heading', type: 'text' },
-      { key: 'aboutIntro', label: 'Intro — text', type: 'textarea' },
-      { key: 'aboutMusicJourneyTitle', label: 'Music journey — section heading', type: 'text' },
-      { key: 'aboutMusicJourney', label: 'Music journey — text', type: 'textarea' },
-      { key: 'aboutPhilosophyTitle', label: 'Philosophy — section heading', type: 'text' },
-      { key: 'aboutPhilosophy', label: 'Philosophy — text', type: 'textarea' },
-      { key: 'collaborationInfoTitle', label: 'Collaboration — section heading', type: 'text' },
-      { key: 'collaborationInfo', label: 'Collaboration — text', type: 'textarea' },
+      { key: 'personalStatement', label: 'Core description / statement', type: 'textarea' },
     ],
   },
   {
     title: 'Work with me',
     fields: [
-      { key: 'workWithMeDescription', label: 'Collaboration description', type: 'textarea' },
+      { key: 'workWithMeDescription', label: 'Collaboration & services description', type: 'textarea' },
       { key: 'contactEmail', label: 'Contact email', type: 'email' },
     ],
   },
@@ -95,8 +82,8 @@ export function AdminSiteSettingsPage() {
         <div>
           <h1 className="admin-panel__title">Site Content</h1>
           <p className="admin-panel__description">
-            Everything editable on the homepage, About page, navigation, and footer lives here — including the
-            creator name shown across the whole site.
+            The core brand text shown across the site — homepage, navigation, and footer — lives here, including the
+            creator name.
           </p>
         </div>
       </div>
