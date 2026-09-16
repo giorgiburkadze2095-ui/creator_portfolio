@@ -1,8 +1,7 @@
 :root {
-  /* Dark is the default theme (unqualified :root), matching the site's
-     original design. The light theme below only ever overrides this block
-     via [data-theme="light"] — nothing here needs a [data-theme="dark"]
-     qualifier. */
+  /* Dark is the only mode the site supports — locked permanently, not a
+     default that a toggle could override. Pure-black/dark-graphite surfaces
+     with high-contrast off-white text. */
   --color-bg: #0b0b0c;
   --color-bg-raised: #131315;
   --color-bg-elevated: #1a1a1d;
@@ -37,30 +36,6 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
   color-scheme: dark;
-}
-
-/* Light theme — a brighter reading of the same design, not a different
-   template: same warm hue family, same hierarchy (page < card < input
-   surfaces get progressively more distinct), same accent, just re-tuned
-   values so contrast holds up on light backgrounds. Applied via a
-   data-attribute the ThemeContext sets on <html>, not prefers-color-scheme —
-   dark stays the default regardless of OS setting. */
-:root[data-theme='light'] {
-  --color-bg: #f7f5f2;
-  --color-bg-raised: #ffffff;
-  --color-bg-elevated: #efebe6;
-  --color-border: #e1dbd3;
-  --color-text: #1a1816;
-  --color-text-dim: #635c53;
-  --color-text-faint: #8f867b;
-  --color-accent: #b35a24;
-  --color-accent-soft: rgba(179, 90, 36, 0.12);
-  --color-accent-hover: #d97a3f;
-  --color-nav-scrim: rgba(247, 245, 242, 0.85);
-  --color-danger: #c0392b;
-  --color-success: #2f8f57;
-
-  color-scheme: light;
 }
 
 * {
@@ -157,12 +132,8 @@ ul, ol {
   font-size: 0.95rem;
   font-weight: 600;
   border: 1px solid transparent;
-  transition: transform 0.2s var(--ease-out), background 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   white-space: nowrap;
-}
-
-.button:hover {
-  transform: translateY(-2px);
 }
 
 .button--primary {

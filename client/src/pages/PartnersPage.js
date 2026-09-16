@@ -33,7 +33,7 @@ export function PartnersPage() {
       ) : partners.length > 0 ? (
         <div className="partners-page__grid">
           {partners.map((partner, index) => (
-            <Reveal key={partner.id} delay={Math.min(index * 0.05, 0.4)} y={16} scale={0.97}>
+            <Reveal key={partner.id} delay={Math.min(index * 0.05, 0.4)}>
               <PartnerCard partner={partner} />
             </Reveal>
           ))}

@@ -100,16 +100,14 @@
   background: var(--color-bg);
   display: flex;
   flex-direction: column;
-  transform: translateY(-8px);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+  transition: opacity 0.2s ease-out;
   overflow-y: auto;
 }
 
 .navbar__mobile--open {
   opacity: 1;
-  transform: translateY(0);
   pointer-events: auto;
 }
 

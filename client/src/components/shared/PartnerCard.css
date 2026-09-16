@@ -8,12 +8,11 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-bg-raised);
-  transition: border-color 0.25s ease, transform 0.25s ease;
+  transition: border-color 0.25s ease;
 }
 
 a.partner-card:hover {
   border-color: var(--color-accent);
-  transform: translateY(-3px);
 }
 
 .partner-card__logo {

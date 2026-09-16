@@ -4,20 +4,17 @@ import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
 import { AuthProvider } from './context/AuthContext.js';
 import { SiteContentProvider } from './context/SiteContentContext.js';
-import { ThemeProvider } from './context/ThemeContext.js';
 
 test('renders the site navigation brand', async () => {
   render(
     <HelmetProvider>
-      <ThemeProvider>
-        <BrowserRouter>
-          <SiteContentProvider>
-            <AuthProvider>
-              <App />
-            </AuthProvider>
-          </SiteContentProvider>
-        </BrowserRouter>
-      </ThemeProvider>
+      <BrowserRouter>
+        <SiteContentProvider>
+          <AuthProvider>
+            <App />
+          </AuthProvider>
+        </SiteContentProvider>
+      </BrowserRouter>
     </HelmetProvider>
   );
   // No backend is available in this test environment, so the brand name

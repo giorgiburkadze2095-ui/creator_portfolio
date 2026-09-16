@@ -2,19 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <script>
-      // Applies a saved light-theme preference before the first paint, so
-      // there is no flash of the default dark theme for returning visitors
-      // who chose light. Dark needs no attribute — it's the unqualified
-      // :root default in index.css — so this only ever has to act for light.
-      (function () {
-        try {
-          if (localStorage.getItem('theme') === 'light') {
-            document.documentElement.setAttribute('data-theme', 'light');
-          }
-        } catch (e) {}
-      })();
-    </script>
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16.png" />
     <link rel="icon" type="image/png" sizes="24x24" href="%PUBLIC_URL%/favicon-24.png" />

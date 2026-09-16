@@ -18,12 +18,11 @@
   text-transform: uppercase;
   white-space: nowrap;
   color: var(--color-text-dim);
-  transition: color 0.2s ease, transform 0.2s var(--ease-out);
+  transition: color 0.2s ease;
 }
 
 .music-toggle:hover {
   color: var(--color-text);
-  transform: translateY(-1px);
 }
 
 .music-toggle--active {
@@ -42,9 +41,9 @@
   }
 }
 
-/* Below this, "Break the silence" next to the brand name, theme toggle, and
-   menu button gets tight enough to wrap the brand name onto two lines —
-   trim further so the existing navbar layout never reflows. */
+/* Below this, "Break the silence" next to the brand name and menu button
+   gets tight enough to wrap the brand name onto two lines — trim further so
+   the existing navbar layout never reflows. */
 @media (max-width: 340px) {
   .music-toggle {
     font-size: 0.5rem;

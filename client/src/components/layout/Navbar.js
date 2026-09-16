@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useSiteContent } from '../../context/SiteContentContext.js';
-import { ThemeToggle } from '../shared/ThemeToggle.js';
 import { MusicToggle } from '../shared/MusicToggle.js';
 import { handleSameRouteNavClick } from '../../utils/navigation.js';
 import './Navbar.css';
@@ -65,7 +64,6 @@ export function Navbar() {
 
         <div className="navbar__utility">
           <MusicToggle />
-          <ThemeToggle />
 
           <button
             type="button"

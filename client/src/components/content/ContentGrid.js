@@ -11,7 +11,7 @@ export function ContentGrid({ items, variant = 'grid', emptyTitle, emptyDescript
   return (
     <div className={`content-grid content-grid--${variant}`}>
       {items.map((item, index) => (
-        <Reveal key={item.id} delay={Math.min(index * 0.05, 0.4)} y={16} scale={0.97}>
+        <Reveal key={item.id} delay={Math.min(index * 0.05, 0.4)}>
           <ContentCard item={item} variant={variant} />
         </Reveal>
       ))}

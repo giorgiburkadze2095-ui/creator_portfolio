@@ -2,7 +2,6 @@ import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.js';
 import { MessagesProvider, useMessagesContext } from '../../context/MessagesContext.js';
 import { RouteTransition } from '../shared/RouteTransition.js';
-import { ThemeToggle } from '../shared/ThemeToggle.js';
 import './AdminLayout.css';
 import './admin-ui.css';
 
@@ -59,7 +58,6 @@ function AdminLayoutInner() {
             <p className="admin-layout__user">{user?.name}</p>
             <p className="admin-layout__role">{user?.role}</p>
           </NavLink>
-          <ThemeToggle />
           <button type="button" className="button button--ghost" onClick={logout}>
             Log out
           </button>

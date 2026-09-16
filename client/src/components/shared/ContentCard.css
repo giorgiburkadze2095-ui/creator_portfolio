@@ -5,11 +5,10 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: transform 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+  transition: border-color 0.3s var(--ease-out);
 }
 
 .content-card:hover {
-  transform: translateY(-4px);
   border-color: var(--color-accent);
 }
 

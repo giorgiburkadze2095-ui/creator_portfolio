@@ -6,7 +6,6 @@ import './index.css';
 import App from './App';
 import { AuthProvider } from './context/AuthContext.js';
 import { SiteContentProvider } from './context/SiteContentContext.js';
-import { ThemeProvider } from './context/ThemeContext.js';
 import { MusicProvider } from './context/MusicContext.js';
 import reportWebVitals from './reportWebVitals';
 
@@ -22,17 +21,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <HelmetProvider>
-      <ThemeProvider>
-        <BrowserRouter>
-          <SiteContentProvider>
-            <AuthProvider>
-              <MusicProvider>
-                <App />
-              </MusicProvider>
-            </AuthProvider>
-          </SiteContentProvider>
-        </BrowserRouter>
-      </ThemeProvider>
+      <BrowserRouter>
+        <SiteContentProvider>
+          <AuthProvider>
+            <MusicProvider>
+              <App />
+            </MusicProvider>
+          </AuthProvider>
+        </SiteContentProvider>
+      </BrowserRouter>
     </HelmetProvider>
   </React.StrictMode>
 );
