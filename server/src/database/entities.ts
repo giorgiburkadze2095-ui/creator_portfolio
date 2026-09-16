@@ -1,6 +1,5 @@
 import { AdminUser } from '../admins/entities/admin-user.entity.js';
 import { ContentItem } from '../content/entities/content-item.entity.js';
-import { Quote } from '../quotes/entities/quote.entity.js';
 import { Partner } from '../partners/entities/partner.entity.js';
 import { SocialLink } from '../social-links/entities/social-link.entity.js';
 import { SiteContent } from '../site-settings/entities/site-content.entity.js';
@@ -11,7 +10,6 @@ import { ContactMessage } from '../messages/entities/contact-message.entity.js';
 export const ENTITIES = [
   AdminUser,
   ContentItem,
-  Quote,
   Partner,
   SocialLink,
   SiteContent,

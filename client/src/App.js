@@ -16,7 +16,6 @@ import { AdminAccountPage } from './pages/admin/AdminAccountPage.js';
 import { AdminDashboardPage } from './pages/admin/AdminDashboardPage.js';
 import { AdminMessagesPage } from './pages/admin/AdminMessagesPage.js';
 import { AdminContentPage } from './pages/admin/AdminContentPage.js';
-import { AdminQuotesPage } from './pages/admin/AdminQuotesPage.js';
 import { AdminPartnersPage } from './pages/admin/AdminPartnersPage.js';
 import { AdminSocialLinksPage } from './pages/admin/AdminSocialLinksPage.js';
 import { AdminSiteSettingsPage } from './pages/admin/AdminSiteSettingsPage.js';
@@ -45,7 +44,6 @@ function App() {
           <Route path="/admin/account" element={<AdminAccountPage />} />
           <Route path="/admin/messages" element={<AdminMessagesPage />} />
           <Route path="/admin/content" element={<AdminContentPage />} />
-          <Route path="/admin/quotes" element={<AdminQuotesPage />} />
           <Route path="/admin/partners" element={<AdminPartnersPage />} />
           <Route path="/admin/social-links" element={<AdminSocialLinksPage />} />
           <Route path="/admin/site-settings" element={<AdminSiteSettingsPage />} />
