@@ -27,6 +27,14 @@ export class UpdateSiteContentDto {
 
   @IsOptional()
   @IsString()
+  aboutIntroTitle?: string;
+
+  // Deprecated: the "My story" and "What I care about" About page sections
+  // were removed in favor of a shorter page. Kept, like contactUrl below, so
+  // existing Site Content rows and the columns keep working unchanged; the
+  // Admin UI no longer exposes these fields for editing.
+  @IsOptional()
+  @IsString()
   aboutStory?: string;
 
   @IsOptional()
@@ -47,11 +55,23 @@ export class UpdateSiteContentDto {
 
   @IsOptional()
   @IsString()
+  aboutMusicJourneyTitle?: string;
+
+  @IsOptional()
+  @IsString()
   aboutPhilosophy?: string;
 
   @IsOptional()
   @IsString()
+  aboutPhilosophyTitle?: string;
+
+  @IsOptional()
+  @IsString()
   collaborationInfo?: string;
+
+  @IsOptional()
+  @IsString()
+  collaborationInfoTitle?: string;
 
   @IsOptional()
   @IsString()

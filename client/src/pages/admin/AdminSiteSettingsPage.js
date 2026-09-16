@@ -21,12 +21,14 @@ const FIELD_GROUPS = [
   {
     title: 'About page',
     fields: [
-      { key: 'aboutIntro', label: 'Who I am', type: 'textarea' },
-      { key: 'aboutStory', label: 'My story', type: 'textarea' },
-      { key: 'aboutInterests', label: 'What I care about', type: 'textarea' },
-      { key: 'aboutMusicJourney', label: 'Music journey', type: 'textarea' },
-      { key: 'aboutPhilosophy', label: 'Philosophy', type: 'textarea' },
-      { key: 'collaborationInfo', label: 'Collaboration info', type: 'textarea' },
+      { key: 'aboutIntroTitle', label: 'Intro — section heading', type: 'text' },
+      { key: 'aboutIntro', label: 'Intro — text', type: 'textarea' },
+      { key: 'aboutMusicJourneyTitle', label: 'Music journey — section heading', type: 'text' },
+      { key: 'aboutMusicJourney', label: 'Music journey — text', type: 'textarea' },
+      { key: 'aboutPhilosophyTitle', label: 'Philosophy — section heading', type: 'text' },
+      { key: 'aboutPhilosophy', label: 'Philosophy — text', type: 'textarea' },
+      { key: 'collaborationInfoTitle', label: 'Collaboration — section heading', type: 'text' },
+      { key: 'collaborationInfo', label: 'Collaboration — text', type: 'textarea' },
     ],
   },
   {
